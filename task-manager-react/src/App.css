@@ -1,0 +1,336 @@
+/* <============== General styling ===============> */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  color: black;
+  font-family: Roboto, sans-serif;
+  font-size: 14px;
+  background-color: white;
+} 
+
+#root {
+  width: 100%;
+  background-color: white;
+  min-height: 776px; /* Filling to full screen size automatically */
+  height: 100%;
+  margin: 2px;
+}
+
+.app {
+  height: 100%;
+}
+
+/* <============== Header (task counter) styling =============> */
+.task-counter { /* Create "header" where task counter is displayed in top right */
+  width: 100%;
+  display: flex;
+  background-color: #dc4c3e;
+  color: white;
+  height: 50px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.counter-text { /* Display task count at far right side of header */
+  display: flex;
+  width: 80%;
+  justify-content: right;
+  align-items: center;
+}
+
+.counter-icon { /* Resizing task counter icon properly */
+  height: 24px;
+  width: 24px;
+  margin-right: 5px;
+}
+
+.task-counts {
+  margin-right: 15px;
+}
+
+.menu {
+  justify-content: left;
+  align-items: center;
+  margin-left: 50px;
+  margin-bottom: 5px;
+}
+
+.menu-icon {
+  height: 24px;
+  width: 24px;
+}
+
+.quick-find-box { /* Formatting input "quick find" box */
+  background-color: rgba(255, 255, 255, 0.3);
+  border: none;
+  margin: 10px 0px 10px 16%;  
+  border-radius: 5px;
+  width: 225px;
+  background-image: url(./assets/search_icon.png); /* This was the only way I found I could use the placeholder text and have the search icon inside the input box*/
+  background-position-x: 5px; /* Repositioning search icon to be more centered */
+  background-position-y: 3px;
+  background-repeat: no-repeat; /* Search icon should only appear once */
+  color: white; /* User input into text field should be white for visibility */
+  text-indent: 30px; /* User input should also be indented so search icon is still visible */
+}
+
+.quick-find-box::placeholder { /* Placeholder text should be white and indented to make space for search icon */
+  color: white;
+  text-indent: 30px; 
+}
+
+/* <--------- Styling components below task counter header --------> */
+.app-body {
+  display: flex;
+  flex-direction: row;
+}
+
+/* <========== Tasklist sidebar styling ==========> */
+.task-sidebar {
+  grid-area: sidebar;
+  background-color: #fefbf2;
+  min-height: 725px;
+  min-width: 300px;
+}
+
+.sidebar-list {
+  list-style: none;
+  padding-top: 50px;
+  width: 100%;
+  margin-left: -10px;
+}
+
+.sidebar-list > li {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 45px;
+  padding-left: 20px;
+}
+
+.sidebar-icon {
+  margin-right: 10px;
+}
+
+.sidebar-category {
+  margin-right: 10px;
+}
+
+.sidebar-count {
+  font-size: 12px;
+  color: #7e7d79;
+}
+
+
+.sidebar-list > li:hover { /* Additional styling on sidebar category hover :) */
+  background-color: white;
+}
+
+.sidebar-list > li:hover > .sidebar-category { /* ^ */
+  font-weight: bold;
+}
+
+/* <--------- Styling task filters, task form, and task list in "task list pane" --------> */
+.task-pane {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* <========= Styling for filter buttons ==========> */
+.filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  border-bottom: solid #dc4c3e 1px;
+}
+
+.filter-button {
+  border-radius: 25px;
+  margin: 10px;
+  height: 40px;
+  width: 150px; 
+  background-color: #dc4c3e;
+  color: white;
+}
+
+.filter-button:hover { /* Add responsive styling when hovering a filter button */
+  background-color: rgba(255, 0, 0, 0.7);
+  border: solid #dc4c3e 1px;
+  cursor: pointer;
+}
+
+.filter-button:focus {
+  transition: 0.3s ease;
+}
+
+.filter-button.active { /* Unique styling for currently-active filter button */
+  background-color: white;
+  border: solid #dc4c3e 3px;
+  color: #dc4c3e;
+}
+
+/* <=========== Styling for form to add tasks ===========> */
+.task-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px 0px;
+}
+
+.form-header {
+  font-size: 20px;
+  width: 90%;
+  text-justify: left;
+}
+
+.task-add-form {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+}
+
+.task-label {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+#task-item-desc { /* Change styling for task description input field */
+  background-color: white;
+  border: solid 1px black;
+  padding: 10px;
+  color: black;
+  margin: 5px 0px;
+  border-radius: 8px;
+}
+
+#task-item-desc.error { /* Add attention-catching styling for input field if there's an error */
+  outline: solid red 2px;
+  border: none;
+}
+
+.error-message { /* Style error message if it exists */
+  color: red;
+  margin-left: 20px;
+}
+
+.item-submit-btn { /* Styling for form submit button */
+  width: 125px;
+  margin-top: 5px;
+  border-radius: 25px;
+}
+
+.success-message { /* Display nice success message when a task is successfully added :) */
+  width: 90%;
+  text-justify: left;
+  margin-top: 5px;
+  color: green;
+}
+
+/* <=========== Task list styling ===========> */
+.task-list-block {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.task-list-header {
+  font-weight: bold;
+  font-size: 20px;
+  margin-left: 10%;
+  width: 100%;
+}
+
+.task-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -10px;
+}
+
+/* <=========== Task item styling ===========> */
+.task-item {
+  width: 80%;
+  border: solid 1px black;
+  border-radius: 8px;
+  margin: 10px 0px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.task-check {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.item-checkbox { /* Replacing checkbox with circular filled buttons */
+  appearance: none;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  background-color: white;
+  border: 1px solid #111;
+  cursor: pointer;
+  margin: 0px 10px;
+}
+
+.item-checkbox:hover { /* Add responsive hover styling for checkboxes */
+  background-color: rgba(255, 0, 0, 0.5);
+}
+
+.completed > .task-check > .item-checkbox:checked { /* Add visual indication for checked boxes in finished tasks */
+  background-color: #dc4c3e;
+  outline: solid 3px white;
+  outline-offset: -4px;
+  border: solid 1px #dc4c3e;
+} 
+
+.completed > .task-check > .task-description { /* Change text for completed tasks */
+  text-decoration: line-through;
+}
+
+.task-delete {
+  height: 50%;
+  padding: 0px 5px 4px 5px;
+  background-color: white;
+  color: red;
+}
+
+.task-delete:hover { /* Add responsive styling for task delete button */
+  background-color: black;
+  color: white;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+/* <=========== Responsive styling for smaller screens ===========> */
+@media (max-width: 480px) {
+    .app-body {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .task-sidebar {
+      display: none; /* Hide the sidebar when the screen is small */
+    }
+
+    .quick-find-box {
+      min-width: 0px;
+      max-width: 150px;
+      margin-left: 10%;
+    }
+}
+
+@media (max-width: 200px) {
+  .quick-find-box {
+    display: none; /* For very narrow screens, remove the quick find box completely */
+  }
+}
