@@ -29,7 +29,7 @@ function App() {
 
   // Remove task from the list
   const deleteTask = (id) => {
-    setTasks(tasks.filter(task => task.id !== id)); // Only show tasks that don't have the given ID
+    setTasks(tasks.filter(task => task.id !== id)); // Remove the task with the given ID
   }
 
   // Filter tasks based on completion status
