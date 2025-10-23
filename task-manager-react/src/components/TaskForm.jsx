@@ -37,9 +37,12 @@ function TaskForm({onAddTask}) {
         console.log("Task added:", description)
         setSuccessMsg("Task successfully added!")
 
-        // After successful form submission, add the task and clear the form
+        // After successful form submission, add the task and clear the form, and remove the success message after 5 seconds
         onAddTask(description)
         setDescription('')
+        setTimeout(() => {
+            setSuccessMsg('')
+        }, 5000)
     }
 
     return (
