@@ -285,7 +285,7 @@ body {
   background-color: rgba(255, 0, 0, 0.5);
 }
 
-.completed > .task-check > .item-checkbox:checked { /* Add visual indication for checked boxes in finished tasks */
+.completed > .task-check > .item-checkbox:checked { /* Add visual indication for checked boxes in completed tasks */
   background-color: #dc4c3e;
   outline: solid 3px white;
   outline-offset: -4px;
