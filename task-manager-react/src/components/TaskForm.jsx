@@ -28,7 +28,7 @@ function TaskForm({onAddTask}) {
         e.preventDefault() // Prevent page from reloading when new task is added
 
         // Validate form content -- if there's an error (task description empty), set the error and don't submit the form
-        if (!description.trim()) {
+        if (!description.trim() || !description) {
             setErrors('Task description cannot be empty.') // <======== this only works when desc is all whitespace -- want this to show when trying to submit an empty task right away, how???
             return;
         }
