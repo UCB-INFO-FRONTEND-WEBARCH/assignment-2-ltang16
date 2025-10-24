@@ -242,8 +242,9 @@ body {
 .task-list-header {
   font-weight: bold;
   font-size: 20px;
-  margin-left: 10%;
+  text-justify: left;
   width: 100%;
+  padding-left: 5%;
 }
 
 .task-list {
